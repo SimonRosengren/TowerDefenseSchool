@@ -6,16 +6,19 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace TowerDefenseAlgorithm.Tile
+namespace TowerDefenseAlgorithm
 {
     class Tile
     {
-        Texture2D text;
+        Vector2 pos = new Vector2();
+        //Texture2D text;
         bool passable;
 
-        Tile(bool passable)
+        public Tile(bool passable, int xPos, int yPos)
         {
             this.passable = passable;
+            this.pos.X = xPos;
+            this.pos.Y = yPos;
         }
         public void SetPassable(bool b)
         {
@@ -24,6 +27,15 @@ namespace TowerDefenseAlgorithm.Tile
         public bool isPassable()
         {
             return this.passable;
+        }
+        public void Draw(SpriteBatch sb)
+        {
+            if (!passable)
+            {
+                sb.Draw(Globals.wallTex, pos, Color.White);
+            }
+            else
+                sb.Draw(Globals.floorText, pos, Color.White);            
         }
     }
 }

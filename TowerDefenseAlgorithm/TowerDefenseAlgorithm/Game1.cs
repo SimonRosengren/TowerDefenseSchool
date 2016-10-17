@@ -9,11 +9,13 @@ namespace TowerDefenseAlgorithm
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Board board;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            board = new Board();
         }
 
         protected override void Initialize()
@@ -25,6 +27,7 @@ namespace TowerDefenseAlgorithm
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            Globals.LoadTextures(Content);
         }
 
         protected override void UnloadContent()
@@ -42,8 +45,10 @@ namespace TowerDefenseAlgorithm
 
         protected override void Draw(GameTime gameTime)
         {
+            spriteBatch.Begin();
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            board.Draw(spriteBatch);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

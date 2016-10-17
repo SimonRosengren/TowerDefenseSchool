@@ -17,8 +17,8 @@ namespace TowerDefenseAlgorithm
 
         public static void LoadTextures(ContentManager content)
         {
-            wallTex = content.Load<Texture2D>("Middle.png");
-            floorText = content.Load<Texture2D>("notPassable.png");
+            wallTex = content.Load<Texture2D>(@"notPassable");
+            floorText = content.Load<Texture2D>(@"Middle");
         }
     }
 }

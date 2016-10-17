@@ -14,7 +14,7 @@ namespace TowerDefenseAlgorithm
         Tile [,] board = new Tile[10, 10];
         public Board()
         {
-
+            CreateEmptyBoard();
         }
         void CreateEmptyBoard()
         {

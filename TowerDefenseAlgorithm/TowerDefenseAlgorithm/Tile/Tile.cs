@@ -10,7 +10,7 @@ namespace TowerDefenseAlgorithm
 {
     class Tile
     {
-        Vector2 pos = new Vector2();
+        public Vector2 pos = new Vector2();
         //Texture2D text;
         bool passable;
 

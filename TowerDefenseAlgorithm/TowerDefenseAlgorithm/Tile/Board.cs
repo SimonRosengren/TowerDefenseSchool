@@ -11,7 +11,7 @@ namespace TowerDefenseAlgorithm
     class Board
     {
         const int SIZE = 10;
-        Tile [,] board = new Tile[10, 10];
+        public static Tile [,] board = new Tile[10, 10];
         public Board()
         {
             CreateEmptyBoard();

@@ -11,7 +11,8 @@ namespace TowerDefenseAlgorithm
     abstract class Bullet
     {
         protected Vector2 pos;
-        public Bullet(Vector2 pos)
+        protected Vector2 target;
+        public Bullet(Vector2 pos, Vector2 target)
         {
             this.pos = pos;
         }

@@ -10,17 +10,18 @@ namespace TowerDefenseAlgorithm
 {
     class NormalBullet : Bullet
     {
-        public NormalBullet(Vector2 pos) : base(pos)
+        public NormalBullet(Vector2 pos, Vector2 target) : base(pos, target)
         {
 
         }
         public override void Update(GameTime time)
         {
-            
+            this.pos += Vector2.Normalize(pos - target);
         }
         public override void Draw(SpriteBatch sb)
         {
             sb.Draw(Globals.bullet, pos, Color.White);
         }
+        
     }
 }

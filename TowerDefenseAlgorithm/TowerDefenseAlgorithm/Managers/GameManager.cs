@@ -36,9 +36,9 @@ namespace TowerDefenseAlgorithm
             {
                 m.Draw(sb);
             }
-            foreach (Bullet b in bullets)
+            foreach (Tower t in towers)
             {
-                b.Draw(sb);
+                t.Draw(sb);
             }
         }
     }

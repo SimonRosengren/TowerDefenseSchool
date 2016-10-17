@@ -13,9 +13,24 @@ namespace TowerDefenseAlgorithm
         {
             
         }
+        public override void Update(GameTime time)
+        {
+            foreach (Bullet b in bullets)
+            {
+                b.Update(time);
+            }
+        }
         public override void Draw(SpriteBatch sb)
         {
             sb.Draw(Globals.mainTower, pos);
+            foreach (Bullet b in bullets)
+            {
+                b.Draw(sb);
+            }
+        }
+        public override void Shoot(Vector2 target)
+        {
+            bullets.Add(new NormalBullet(this.pos, target));
         }
 
 

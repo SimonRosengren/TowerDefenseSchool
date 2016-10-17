@@ -12,7 +12,8 @@ namespace TowerDefenseAlgorithm
     {
         int hp = 10;
         Vector2 pos;
-        public Vector2 nextTile = new Vector2(4, 1);
+        float distanceMoved = 0;
+        public Vector2 nextTile = new Vector2(2, 1);
         public Vector2 currentTile;
         public Monster(Vector2 pos)
         {
@@ -28,7 +29,14 @@ namespace TowerDefenseAlgorithm
         public void Move(GameTime time)
         {
             //this.pos = Vector2.Lerp(pos, Board.board[(int)nextTile.X, (int)nextTile.Y].pos, 2f);
-            this.pos.X += Vector2.Distance(pos, nextTile * 50) / 50;
+            this.pos.X += Vector2.Distance(currentTile * 50, nextTile * 50) / 50;
+            distanceMoved = Vector2.Distance(currentTile * 50, pos);
+            if (distanceMoved >= Globals.TILE_SIZE)
+            {
+                currentTile = nextTile;
+                distanceMoved = 0;
+                
+            }
         }
         public void TryMove(GameTime time)
         {

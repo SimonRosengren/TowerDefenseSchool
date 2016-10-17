@@ -25,7 +25,7 @@ namespace TowerDefenseAlgorithm
 
             monster = new Monster(new Vector2(50, 50));
 
-            tower = new Tower(new Vector2(100, 100));
+            tower = new MainTower(new Vector2(100, 100));
 
         }
 

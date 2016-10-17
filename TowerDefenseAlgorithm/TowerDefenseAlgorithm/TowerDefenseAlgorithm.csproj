@@ -46,6 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tile\Board.cs" />
     <Compile Include="Tile\Tile.cs" />
+    <Compile Include="Tower\MainTower.cs" />
     <Compile Include="Tower\Tower.cs" />
   </ItemGroup>
   <ItemGroup>

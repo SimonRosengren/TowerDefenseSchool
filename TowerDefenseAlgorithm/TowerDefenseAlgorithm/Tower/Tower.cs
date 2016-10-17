@@ -7,9 +7,9 @@ using System.Text;
 
 namespace TowerDefenseAlgorithm
 {
-    class Tower
+    abstract class Tower
     {
-        Vector2 pos;
+        protected Vector2 pos;
 
         public Tower(Vector2 pos)
         {
@@ -17,9 +17,6 @@ namespace TowerDefenseAlgorithm
      
         }
 
-        public void Draw(SpriteBatch sb)
-        {
-            sb.Draw(Globals.mainTower, pos);
-        }
+        public abstract void Draw(SpriteBatch sb);
     }
 }

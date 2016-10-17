@@ -10,10 +10,11 @@ namespace TowerDefenseAlgorithm
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Board board;
+        GameManager gm;
 
         Monster monster;
         
-
+        Bullet b = new NormalBullet(new Vector2(250, 250));
         Tower tower;
 
 
@@ -22,7 +23,7 @@ namespace TowerDefenseAlgorithm
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             board = new Board();
-
+            gm = new GameManager();
             monster = new Monster(new Vector2(50, 50));
 
             tower = new MainTower(new Vector2(100, 100));
@@ -51,7 +52,7 @@ namespace TowerDefenseAlgorithm
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             monster.Update(gameTime);
-
+            gm.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -60,8 +61,9 @@ namespace TowerDefenseAlgorithm
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.CornflowerBlue);
             board.Draw(spriteBatch);
-
+            b.Draw(spriteBatch);
             monster.Draw(spriteBatch);
+            gm.Draw(spriteBatch);
             tower.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);

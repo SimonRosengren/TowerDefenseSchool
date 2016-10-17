@@ -22,13 +22,10 @@ namespace TowerDefenseAlgorithm
         }
         public void Update(GameTime time)
         {
-
-            //nextTile.X++;
             TryMove(time);
         }
         public void Move(GameTime time)
         {
-            //this.pos = Vector2.Lerp(pos, Board.board[(int)nextTile.X, (int)nextTile.Y].pos, 2f);
             this.pos.X += Vector2.Distance(currentTile * 50, nextTile * 50) / 50;
             distanceMoved = Vector2.Distance(currentTile * 50, pos);
             if (distanceMoved >= Globals.TILE_SIZE)

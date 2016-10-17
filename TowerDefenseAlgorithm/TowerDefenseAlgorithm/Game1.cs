@@ -10,12 +10,14 @@ namespace TowerDefenseAlgorithm
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Board board;
+        Tower tower;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             board = new Board();
+            tower = new Tower(new Vector2(100, 100));
         }
 
         protected override void Initialize()
@@ -48,6 +50,7 @@ namespace TowerDefenseAlgorithm
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.CornflowerBlue);
             board.Draw(spriteBatch);
+            tower.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

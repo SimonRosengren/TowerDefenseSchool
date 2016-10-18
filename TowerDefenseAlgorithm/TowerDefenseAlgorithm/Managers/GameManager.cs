@@ -17,13 +17,13 @@ namespace TowerDefenseAlgorithm
         {
             monsters.Add(new Monster(pos));
         }
-        public void AddTower(Vector2 pos)
+        public void AddMainTower(Vector2 pos)
         {
-<<<<<<< HEAD
             towers.Add(new MainTower(pos, 3));
-=======
-            towers.Add(new PurpleTower(pos));
->>>>>>> origin/master
+        }
+        public void AddPurpleTower(Vector2 pos)
+        {
+            towers.Add(new PurpleTower(pos, 5));
         }
         public void Update(GameTime time)
         {

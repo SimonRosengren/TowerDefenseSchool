@@ -20,8 +20,12 @@ namespace TowerDefenseAlgorithm
             Content.RootDirectory = "Content";
             board = new Board();
             gm = new GameManager();
-            gm.AddTower(new Vector2(150, 150));
+            gm.AddMainTower(new Vector2(150, 150));
             gm.AddMonster(new Vector2(150, 50));
+            graphics.PreferredBackBufferWidth = 750;
+            graphics.PreferredBackBufferHeight = 750;
+            graphics.ApplyChanges();
+
         }
 
         protected override void Initialize()

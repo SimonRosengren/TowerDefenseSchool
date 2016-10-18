@@ -9,7 +9,7 @@ namespace TowerDefenseAlgorithm
 {
     class MainTower : Tower 
     {
-        float fireRate = 1f;
+        float fireRate = 0.6f;
         float reloadTimer = 0;
         bool reloading = true;
         public MainTower(Vector2 pos, int damage) : base(pos, damage)
@@ -21,14 +21,11 @@ namespace TowerDefenseAlgorithm
             for (int i = 0; i < bullets.Count; i++)
             {
                 bullets[i].Update(time);
-<<<<<<< HEAD
-=======
                 bullets[i].RemoveBullet();
                 if (bullets[i].finished)
                 {
                     bullets.RemoveAt(i);
                 }               
->>>>>>> origin/master
             }
             if (reloading)
             {

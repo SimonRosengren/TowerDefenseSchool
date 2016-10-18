@@ -12,8 +12,8 @@ namespace TowerDefenseAlgorithm
     public static class Globals
     {
         public static int TILE_SIZE = 50;
-        public static int X_SIZE = 10;
-        public static int Y_SIZE = 10;
+        public static int X_SIZE = 15;
+        public static int Y_SIZE = 15;
         public static Texture2D wallTex;
         public static Texture2D floorText;
         public static Texture2D enemyTex;

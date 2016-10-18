@@ -62,20 +62,7 @@ namespace TowerDefenseAlgorithm
         }
         public static void CalculateClosestPath(Vector2 startTile, Vector2 endTile)
         {
-            ////A-star goes here and then adds the path to "path"
-            //path.Add(new Vector2(4, 3));
-            //Board.board[4, 3].path = true;  //Bara för att markera pathen black
-            //path.Add(new Vector2(5, 3));
-            //Board.board[5, 3].path = true;
-            //path.Add(new Vector2(6, 3));
-            //Board.board[6, 3].path = true;
-            //path.Add(new Vector2(6, 4));
-            //Board.board[6, 4].path = true;
-            //path.Add(new Vector2(6, 5));
-            //Board.board[6, 5].path = true;
-            //path.Add(new Vector2(6, 6));
-            //Board.board[6, 6].path = true;
-            path = FindPath(new Point(3, 3), new Point(6, 6));
+            path = FindPath(new Point(3, 3), new Point(9, 9));
         }
 
 

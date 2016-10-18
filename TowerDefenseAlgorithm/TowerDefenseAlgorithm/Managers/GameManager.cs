@@ -19,7 +19,11 @@ namespace TowerDefenseAlgorithm
         }
         public void AddTower(Vector2 pos)
         {
+<<<<<<< HEAD
             towers.Add(new MainTower(pos, 3));
+=======
+            towers.Add(new PurpleTower(pos));
+>>>>>>> origin/master
         }
         public void Update(GameTime time)
         {

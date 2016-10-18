@@ -12,7 +12,6 @@ namespace TowerDefenseAlgorithm
     {
         public Vector2 pos = new Vector2();
         public bool path = false;
-        //Texture2D text;
         bool passable;
 
         public Tile(bool passable, int xPos, int yPos)
@@ -35,6 +34,8 @@ namespace TowerDefenseAlgorithm
             {
                 sb.Draw(Globals.wallTex, pos, Color.White);
             }
+            else if (passable && path)
+                sb.Draw(Globals.pathTileTex, pos, Color.White * 0.5f);
             else
                 sb.Draw(Globals.floorText, pos, Color.White);            
         }

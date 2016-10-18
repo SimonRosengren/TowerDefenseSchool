@@ -42,7 +42,7 @@ namespace TowerDefenseAlgorithm
                         //Monster arrived at goal
                         return;
                     }
-                    if (PathFinder.path[i].X == currentTile.X && PathFinder.path[i].Y == currentTile.Y )
+                    if (PathFinder.path[i].X == currentTile.X && PathFinder.path[i].Y == currentTile.Y )    //Byter till nästa i listan här
                     {
                         nextTile = PathFinder.path[i + 1];
                     }

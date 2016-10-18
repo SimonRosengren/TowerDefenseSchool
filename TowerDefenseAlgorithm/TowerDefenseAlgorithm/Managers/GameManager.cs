@@ -39,6 +39,7 @@ namespace TowerDefenseAlgorithm
             CheckForTowerTargets();
             CheckForHits();
             RemoveDeadMonsters();
+            ColorPath();    //Borde kankse inte hända i Update?
         }
         public void Draw(SpriteBatch sb)
         {
@@ -78,8 +79,6 @@ namespace TowerDefenseAlgorithm
                             ParticleEmitter.Explosion(t.bullets[i].pos);
                             m.TakeDamage(t.bullets[i].damage);
                             t.bullets.RemoveAt(i);
-                            
-
                         }   
                     }                   
                 }
@@ -93,6 +92,13 @@ namespace TowerDefenseAlgorithm
                 {
                     monsters.RemoveAt(i);
                 } 
+            }
+        }
+        void ColorPath()
+        {
+            foreach (Vector2 p in PathFinder.path)
+            {
+                Board.board[(int)p.X, (int)p.Y].path = true;
             }
         }
     }

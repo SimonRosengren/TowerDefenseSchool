@@ -15,6 +15,7 @@ namespace TowerDefenseAlgorithm
         public Bullet(Vector2 pos, Vector2 target)
         {
             this.pos = pos;
+            this.target = target;
         }
         public abstract void Update(GameTime time);
         public abstract void Draw(SpriteBatch sb);

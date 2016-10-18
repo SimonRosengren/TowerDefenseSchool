@@ -9,6 +9,7 @@ namespace TowerDefenseAlgorithm
 {
     abstract class Tower
     {
+        float range = 200;
         protected List<Bullet> bullets = new List<Bullet>();
         protected Vector2 pos;
 
@@ -20,5 +21,14 @@ namespace TowerDefenseAlgorithm
         public abstract void Shoot(Vector2 target);
         public abstract void Update(GameTime time);
         public abstract void Draw(SpriteBatch sb);
+        public bool IsMonsterInRange(Monster other)
+        {
+            Vector2 center = new Vector2((int)pos.X + 25, (int)pos.Y + 25);
+            if (Vector2.Distance(center, other.getCenterPos()) <= range)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

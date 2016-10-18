@@ -9,6 +9,9 @@ namespace TowerDefenseAlgorithm
 {
     class MainTower : Tower 
     {
+        float fireRate = 1f;
+        float reloadTimer = 0;
+        bool reloading = true;
         public MainTower(Vector2 pos) : base(pos)
         {
             
@@ -18,6 +21,14 @@ namespace TowerDefenseAlgorithm
             foreach (Bullet b in bullets)
             {
                 b.Update(time);
+            }
+            if (reloading)
+            {
+                reloadTimer += (float)time.ElapsedGameTime.TotalSeconds;
+            }
+            if (reloadTimer > fireRate)
+            {
+                reloading = false;
             }
         }
         public override void Draw(SpriteBatch sb)
@@ -30,9 +41,13 @@ namespace TowerDefenseAlgorithm
         }
         public override void Shoot(Vector2 target)
         {
-            bullets.Add(new NormalBullet(this.pos, target));
+            if (!reloading)
+            {
+                bullets.Add(new NormalBullet(new Vector2((int)pos.X + 25, (int)pos.Y + 25), target));
+                reloading = true;
+                reloadTimer = 0;
+            }            
         }
-
 
     }
 }

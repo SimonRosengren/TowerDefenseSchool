@@ -10,7 +10,7 @@ namespace TowerDefenseAlgorithm
 {
     class Monster
     {
-        int hp = 10;
+        public int hp { get; private set; }
         Vector2 pos;
         float distanceMoved = 0;
         public Vector2 nextTile = new Vector2(2, 1);
@@ -18,6 +18,7 @@ namespace TowerDefenseAlgorithm
         public Monster(Vector2 pos)
         {
             this.pos = pos;
+            this.hp = 10;
             currentTile = new Vector2((int)pos.Y / 50, (int)pos.Y / 50);
         }
         public void Update(GameTime time)
@@ -55,6 +56,14 @@ namespace TowerDefenseAlgorithm
         public void Draw(SpriteBatch sb)
         {
             sb.Draw(Globals.enemyTex, pos, Color.White);
+        }
+        public Vector2 getCenterPos()
+        {
+            return new Vector2((int)pos.X + 25, (int)pos.Y + 25);
+        }
+        public void TakeDamage(int damage)
+        {
+            this.hp -= damage;
         }
     }
 }

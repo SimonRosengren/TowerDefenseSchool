@@ -16,7 +16,7 @@ namespace TowerDefenseAlgorithm
         }
         public override void Update(GameTime time)
         {
-            this.pos += Vector2.Normalize(pos - target);
+            this.pos += Vector2.Normalize(target - pos);
         }
         public override void Draw(SpriteBatch sb)
         {

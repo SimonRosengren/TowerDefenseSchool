@@ -12,7 +12,6 @@ namespace TowerDefenseAlgorithm
         Board board;
         GameManager gm;
 
-
         MainTower towah = new MainTower(new Vector2(100, 100));
 
         public Game1()
@@ -21,8 +20,8 @@ namespace TowerDefenseAlgorithm
             Content.RootDirectory = "Content";
             board = new Board();
             gm = new GameManager();
-
-
+            gm.AddTower(new Vector2(150, 150));
+            gm.AddMonster(new Vector2(150, 50));
         }
 
         protected override void Initialize()
@@ -46,8 +45,7 @@ namespace TowerDefenseAlgorithm
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            towah.Shoot(new Vector2(300, 350));
-            towah.Update(gameTime);
+   
             gm.Update(gameTime);
             base.Update(gameTime);
         }
@@ -59,9 +57,10 @@ namespace TowerDefenseAlgorithm
             board.Draw(spriteBatch);
 
             gm.Draw(spriteBatch);
-            towah.Draw(spriteBatch);
+
             spriteBatch.End();
             base.Draw(gameTime);
         }
+
     }
 }

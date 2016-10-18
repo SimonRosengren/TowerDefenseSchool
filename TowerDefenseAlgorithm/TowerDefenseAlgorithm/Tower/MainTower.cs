@@ -18,9 +18,10 @@ namespace TowerDefenseAlgorithm
         }
         public override void Update(GameTime time)
         {
-            foreach (Bullet b in bullets)
+            for (int i = 0; i < bullets.Count; i++)
             {
-                b.Update(time);
+                bullets[i].Update(time);
+                bullets.RemoveAt(i);
             }
             if (reloading)
             {

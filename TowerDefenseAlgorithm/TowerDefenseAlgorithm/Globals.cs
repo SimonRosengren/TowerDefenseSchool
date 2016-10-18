@@ -21,6 +21,7 @@ namespace TowerDefenseAlgorithm
         public static Texture2D redTower;
         public static Texture2D purpleTower;
         public static Texture2D bullet;
+        public static Texture2D particleTex;
 
 
         public static void LoadTextures(ContentManager content)
@@ -32,6 +33,7 @@ namespace TowerDefenseAlgorithm
             redTower = content.Load<Texture2D>(@"Tower2");
             purpleTower = content.Load<Texture2D>(@"Tower3");
             bullet = content.Load<Texture2D>(@"bullet");
+            particleTex = content.Load<Texture2D>(@"Particle");
         }
     }
 }

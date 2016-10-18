@@ -18,6 +18,8 @@ namespace TowerDefenseAlgorithm
         public static Texture2D floorText;
         public static Texture2D enemyTex;
         public static Texture2D mainTower;
+        public static Texture2D redTower;
+        public static Texture2D purpleTower;
         public static Texture2D bullet;
 
 
@@ -27,6 +29,8 @@ namespace TowerDefenseAlgorithm
             floorText = content.Load<Texture2D>(@"Middle");
             enemyTex = content.Load<Texture2D>(@"Ball");
             mainTower = content.Load<Texture2D>(@"Tower1");
+            redTower = content.Load<Texture2D>(@"Tower2");
+            purpleTower = content.Load<Texture2D>(@"Tower3");
             bullet = content.Load<Texture2D>(@"bullet");
         }
     }

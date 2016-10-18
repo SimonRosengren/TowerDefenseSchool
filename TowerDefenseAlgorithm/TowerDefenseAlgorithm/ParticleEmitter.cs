@@ -10,13 +10,13 @@ namespace TowerDefenseAlgorithm
 {
     public static class ParticleEmitter
     {
-        private static Random rnd;
+        private static Random rnd = new Random();
         private static List<Particle> particles = new List<Particle>();
         public static void Explosion(Vector2 pos)
         {
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 100; i++)
             {
-                particles.Add(new Particle(pos, new Vector2((float)rnd.NextDouble(), (float)rnd.NextDouble()), 1f, 100));
+                particles.Add(new Particle(pos, new Vector2((float)rnd.Next(-10, 10), (float)rnd.Next(-10, 10)), 1f, 50));
             }
         }
         private static void RemoveFinished()
@@ -27,6 +27,21 @@ namespace TowerDefenseAlgorithm
                 {
                     particles.RemoveAt(i);
                 }
+            }
+        }
+        public static void Update(GameTime time)
+        {
+            foreach (Particle p in particles)
+            {
+                p.Update(time);
+            }
+            RemoveFinished();
+        }
+        public static void Draw(SpriteBatch sb)
+        {
+            foreach (Particle p in particles)
+            {
+                p.Draw(sb);
             }
         }
 

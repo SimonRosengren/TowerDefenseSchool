@@ -19,10 +19,12 @@ namespace TowerDefenseAlgorithm
             this.ttl = ttl;
             this.velocity = velocity;
             this.pos = startPos;
+            this.speed = speed;
         }
         public void Update(GameTime time)
         {
             this.pos += velocity * (float)time.ElapsedGameTime.TotalSeconds * speed;
+            ttl -= (float)time.ElapsedGameTime.TotalSeconds;
         }
         public void Draw(SpriteBatch sb)
         {

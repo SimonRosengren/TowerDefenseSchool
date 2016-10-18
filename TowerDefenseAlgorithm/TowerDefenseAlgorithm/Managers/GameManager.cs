@@ -27,6 +27,7 @@ namespace TowerDefenseAlgorithm
         }
         public void Update(GameTime time)
         {
+            ParticleEmitter.Update(time);
             foreach (Monster m in monsters)
             {
                 m.Update(time);
@@ -49,6 +50,7 @@ namespace TowerDefenseAlgorithm
             {
                 t.Draw(sb);
             }
+            ParticleEmitter.Draw(sb);
         }
         void CheckForTowerTargets()
         {
@@ -73,8 +75,10 @@ namespace TowerDefenseAlgorithm
                     {
                         if (Vector2.Distance(t.bullets[i].pos, m.getCenterPos()) < 25)
                         {
+                            ParticleEmitter.Explosion(t.bullets[i].pos);
                             m.TakeDamage(t.bullets[i].damage);
                             t.bullets.RemoveAt(i);
+                            
 
                         }   
                     }                   

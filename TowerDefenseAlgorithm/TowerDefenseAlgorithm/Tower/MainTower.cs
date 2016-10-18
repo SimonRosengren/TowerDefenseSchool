@@ -21,7 +21,6 @@ namespace TowerDefenseAlgorithm
             for (int i = 0; i < bullets.Count; i++)
             {
                 bullets[i].Update(time);
-                bullets.RemoveAt(i);
             }
             if (reloading)
             {

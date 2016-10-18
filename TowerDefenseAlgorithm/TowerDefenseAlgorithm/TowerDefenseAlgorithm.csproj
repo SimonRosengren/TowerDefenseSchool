@@ -50,6 +50,8 @@
     <Compile Include="Tower\Bullet.cs" />
     <Compile Include="Tower\MainTower.cs" />
     <Compile Include="Tower\NormalBullet.cs" />
+    <Compile Include="Tower\PurpleTower.cs" />
+    <Compile Include="Tower\RedTower.cs" />
     <Compile Include="Tower\Tower.cs" />
   </ItemGroup>
   <ItemGroup>

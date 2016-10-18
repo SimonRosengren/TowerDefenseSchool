@@ -23,7 +23,7 @@ namespace TowerDefenseAlgorithm
         }
         public void RemoveBullet()
         {
-            if (Vector2.Distance(pos, target) < 0.2)
+            if (Vector2.Distance(pos, target) < 10)
             {
                 finished = true;
             }

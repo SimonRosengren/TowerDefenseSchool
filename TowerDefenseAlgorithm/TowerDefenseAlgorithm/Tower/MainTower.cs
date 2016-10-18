@@ -21,6 +21,14 @@ namespace TowerDefenseAlgorithm
             for (int i = 0; i < bullets.Count; i++)
             {
                 bullets[i].Update(time);
+<<<<<<< HEAD
+=======
+                bullets[i].RemoveBullet();
+                if (bullets[i].finished)
+                {
+                    bullets.RemoveAt(i);
+                }               
+>>>>>>> origin/master
             }
             if (reloading)
             {

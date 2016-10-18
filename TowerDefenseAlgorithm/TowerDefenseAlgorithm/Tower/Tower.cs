@@ -10,12 +10,15 @@ namespace TowerDefenseAlgorithm
     abstract class Tower
     {
         float range = 200;
-        protected List<Bullet> bullets = new List<Bullet>();
+        public List<Bullet> bullets;
         protected Vector2 pos;
+        public int damage { get; private set; }
 
-        public Tower(Vector2 pos)
+        public Tower(Vector2 pos, int damage)
         {
             this.pos = pos;
+            this.damage = damage;
+            bullets = new List<Bullet>();
      
         }
         public abstract void Shoot(Vector2 target);
@@ -30,5 +33,6 @@ namespace TowerDefenseAlgorithm
             }
             return false;
         }
+
     }
 }

@@ -12,7 +12,7 @@ namespace TowerDefenseAlgorithm
         Board board;
         GameManager gm;
 
-        MainTower towah = new MainTower(new Vector2(100, 100));
+
 
         public Game1()
         {

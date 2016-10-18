@@ -12,7 +12,7 @@ namespace TowerDefenseAlgorithm
         float fireRate = 1f;
         float reloadTimer = 0;
         bool reloading = true;
-        public MainTower(Vector2 pos) : base(pos)
+        public MainTower(Vector2 pos, int damage) : base(pos, damage)
         {
             
         }
@@ -43,7 +43,7 @@ namespace TowerDefenseAlgorithm
         {
             if (!reloading)
             {
-                bullets.Add(new NormalBullet(new Vector2((int)pos.X + 25, (int)pos.Y + 25), target));
+                bullets.Add(new NormalBullet(new Vector2((int)pos.X + 25, (int)pos.Y + 25), target, damage));
                 reloading = true;
                 reloadTimer = 0;
             }            

@@ -19,7 +19,7 @@ namespace TowerDefenseAlgorithm
         }
         public void AddTower(Vector2 pos)
         {
-            towers.Add(new MainTower(pos));
+            towers.Add(new MainTower(pos, 3));
         }
         public void Update(GameTime time)
         {
@@ -32,6 +32,8 @@ namespace TowerDefenseAlgorithm
                 t.Update(time);
             }
             CheckForTowerTargets();
+            CheckForHits();
+            RemoveDeadMonsters();
         }
         public void Draw(SpriteBatch sb)
         {
@@ -54,6 +56,24 @@ namespace TowerDefenseAlgorithm
                     {
                         t.Shoot(m.getCenterPos());
                     }
+                }
+            }
+        }
+        void CheckForHits()
+        {
+            foreach (Monster m in monsters)
+            {
+                foreach (Tower t in towers)
+                {
+                    for (int i = 0; i < t.bullets.Count; i++)
+                    {
+                        if (Vector2.Distance(t.bullets[i].pos, m.getCenterPos()) < 25)
+                        {
+                            m.TakeDamage(t.bullets[i].damage);
+                            t.bullets.RemoveAt(i);
+
+                        }   
+                    }                   
                 }
             }
         }

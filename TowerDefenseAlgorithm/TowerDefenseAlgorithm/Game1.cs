@@ -20,8 +20,12 @@ namespace TowerDefenseAlgorithm
             Content.RootDirectory = "Content";
             board = new Board();
             gm = new GameManager();
-            gm.AddMainTower(new Vector2(150, 150));
-            gm.AddMonster(new Vector2(150, 50));
+
+            PathFinder.CreateMap();
+            PathFinder.CalculateClosestPath(new Vector2(0, 0), new Vector2(0, 0));  //Skapar path här
+            //PathFinder.FindPath(new Point(3, 3), new Point(6, 6));
+            //gm.AddMainTower(new Vector2(150, 150));
+            gm.AddMonster(new Vector2(150, 150));
             graphics.PreferredBackBufferWidth = 750;
             graphics.PreferredBackBufferHeight = 750;
             graphics.ApplyChanges();

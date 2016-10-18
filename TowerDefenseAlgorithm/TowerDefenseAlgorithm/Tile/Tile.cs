@@ -11,6 +11,7 @@ namespace TowerDefenseAlgorithm
     class Tile
     {
         public Vector2 pos = new Vector2();
+        public bool path = false;
         //Texture2D text;
         bool passable;
 

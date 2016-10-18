@@ -13,13 +13,14 @@ namespace TowerDefenseAlgorithm
         public int hp { get; private set; }
         Vector2 pos;
         float distanceMoved = 0;
-        public Vector2 nextTile = new Vector2(2, 1);
+        public Vector2 nextTile = new Vector2(0, 0);
         public Vector2 currentTile;
         public Monster(Vector2 pos)
         {
             this.pos = pos;
             this.hp = 10;
-            currentTile = new Vector2((int)pos.Y / 50, (int)pos.Y / 50);
+            currentTile = new Vector2(((int)pos.X + 25) / 50, ((int)pos.Y + 25) / 50);
+            nextTile = PathFinder.path.ElementAt(0);
         }
         public void Update(GameTime time)
         {
@@ -27,13 +28,26 @@ namespace TowerDefenseAlgorithm
         }
         public void Move(GameTime time)
         {
-            this.pos.X += Vector2.Distance(currentTile * 50, nextTile * 50) / 50;
+            this.pos += Vector2.Normalize(nextTile * 50 - pos) * (float)time.ElapsedGameTime.TotalSeconds * 100;
+            
+
             distanceMoved = Vector2.Distance(currentTile * 50, pos);
             if (distanceMoved >= Globals.TILE_SIZE)
             {
                 currentTile = nextTile;
-                distanceMoved = 0;
-                
+                for (int i = 0; i < PathFinder.path.Count; i++)
+                {
+                    if (i == PathFinder.path.Count - 1)     
+                    {
+                        //Monster arrived at goal
+                        return;
+                    }
+                    if (PathFinder.path[i].X == currentTile.X && PathFinder.path[i].Y == currentTile.Y )
+                    {
+                        nextTile = PathFinder.path[i + 1];
+                    }
+                }
+                distanceMoved = 0;             
             }
         }
         public void TryMove(GameTime time)

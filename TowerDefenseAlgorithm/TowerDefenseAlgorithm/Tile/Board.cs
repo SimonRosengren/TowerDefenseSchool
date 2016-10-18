@@ -30,6 +30,12 @@ namespace TowerDefenseAlgorithm
                         board[i, j] = new Tile(true, Globals.TILE_SIZE * i, Globals.TILE_SIZE * j);
                 }
             }
+            board[6, 5].SetPassable(false);
+            board[7, 5].SetPassable(false);
+            board[8, 5].SetPassable(false);
+            board[3, 5].SetPassable(false);
+            board[4, 5].SetPassable(false);
+            board[5, 5].SetPassable(false);
         }
         public void Draw(SpriteBatch sb)
         {

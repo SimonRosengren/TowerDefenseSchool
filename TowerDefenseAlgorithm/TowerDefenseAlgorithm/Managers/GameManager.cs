@@ -12,6 +12,8 @@ namespace TowerDefenseAlgorithm
     {
         List<Monster> monsters = new List<Monster>();
         List<Tower> towers = new List<Tower>();
+        float waveTimer;
+        float timeBetweenWaves = 1f;
 
         public void AddMonster(Vector2 pos)
         {
@@ -20,6 +22,9 @@ namespace TowerDefenseAlgorithm
         public void AddMainTower(Vector2 pos)
         {
             towers.Add(new MainTower(pos, 3));
+            Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
+            PathFinder.CreateMap(); //Gör om kartan för pathfinder efter nytt torn
+            PathFinder.CalculateClosestPath(); //Räknar om pathen
         }
         public void AddPurpleTower(Vector2 pos)
         {
@@ -40,6 +45,7 @@ namespace TowerDefenseAlgorithm
             CheckForHits();
             RemoveDeadMonsters();
             ColorPath();    //Borde kankse inte hända i Update?
+            WaveSpawner(time);
         }
         public void Draw(SpriteBatch sb)
         {
@@ -101,5 +107,15 @@ namespace TowerDefenseAlgorithm
                 Board.board[(int)p.X, (int)p.Y].path = true;
             }
         }
+        void WaveSpawner(GameTime time)
+        {
+            waveTimer += (float)time.ElapsedGameTime.TotalSeconds;
+            if (waveTimer >= timeBetweenWaves)
+            {
+                AddMonster(new Vector2(50, 100));
+                waveTimer = 0;
+            }
+        }
+
     }
 }

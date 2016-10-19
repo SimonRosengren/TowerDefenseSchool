@@ -60,9 +60,9 @@ namespace TowerDefenseAlgorithm
                 }
             }
         }
-        public static void CalculateClosestPath(Vector2 startTile, Vector2 endTile)
+        public static void CalculateClosestPath()
         {
-            path = FindPath(new Point(3, 3), new Point(9, 9));
+            path = FindPath(new Point(1, 2), new Point(12, 13));
         }
 
 

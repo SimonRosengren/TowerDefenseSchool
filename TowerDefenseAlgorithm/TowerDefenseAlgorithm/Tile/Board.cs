@@ -36,6 +36,8 @@ namespace TowerDefenseAlgorithm
             board[3, 5].SetPassable(false);
             board[4, 5].SetPassable(false);
             board[5, 5].SetPassable(false);
+            board[12, 8].SetPassable(false);
+            board[11, 8].SetPassable(false);
         }
         public void Draw(SpriteBatch sb)
         {

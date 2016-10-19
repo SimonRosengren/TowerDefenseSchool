@@ -148,12 +148,12 @@ namespace TowerDefenseAlgorithm
             Vector2 mousePos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
             if (Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
-                if (!prevMState)
-                {
-                    mousePos.X = mousePos.X / 50;
-                    mousePos.Y = mousePos.Y / 50;
-                    mousePos.X = (int)mousePos.X * 50;
-                    mousePos.Y = (int)mousePos.Y * 50;
+                mousePos.X = mousePos.X / 50;
+                mousePos.Y = mousePos.Y / 50;
+                mousePos.X = (int)mousePos.X * 50;
+                mousePos.Y = (int)mousePos.Y * 50;
+                if (!prevMState && Board.board[(int)mousePos.X/50, (int)mousePos.Y/50].isPassable())
+                {                   
                     AddMainTower(new Vector2(mousePos.X, mousePos.Y));
                 }
 

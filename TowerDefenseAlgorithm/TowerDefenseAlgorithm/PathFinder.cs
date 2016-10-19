@@ -149,7 +149,6 @@ namespace TowerDefenseAlgorithm
             }
             for (int i = 0; i < finalPath.Count; i++)
             {
-                Console.WriteLine(finalPath[i]);
             }
             return finalPath;
         }

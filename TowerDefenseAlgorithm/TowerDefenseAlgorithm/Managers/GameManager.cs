@@ -12,7 +12,27 @@ namespace TowerDefenseAlgorithm
     {
         List<Monster> monsters = new List<Monster>();
         List<Tower> towers = new List<Tower>();
+        int cash = 100;
+        int health = 100;
+        bool prevMState;
+        private void AdTowerOnClick()
+        {
+            Vector2 mousePos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
 
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+            {
+                if (!prevMState)
+                {
+                    mousePos.X = mousePos.X / 50;
+                    mousePos.Y = mousePos.Y / 50;
+                    mousePos.X = (int)mousePos.X * 50;
+                    mousePos.Y = (int)mousePos.Y * 50;
+                    AddMainTower(new Vector2(mousePos.X, mousePos.Y));
+                }
+
+            }
+            PreviousMouseState();
+        }
         public void AddMonster(Vector2 pos)
         {
             monsters.Add(new Monster(pos));
@@ -20,10 +40,12 @@ namespace TowerDefenseAlgorithm
         public void AddMainTower(Vector2 pos)
         {
             towers.Add(new MainTower(pos, 3));
+            cash -= 100;
         }
         public void AddPurpleTower(Vector2 pos)
         {
             towers.Add(new PurpleTower(pos, 5));
+            cash -= 150;
         }
         public void Update(GameTime time)
         {
@@ -40,6 +62,7 @@ namespace TowerDefenseAlgorithm
             CheckForHits();
             RemoveDeadMonsters();
             ColorPath();    //Borde kankse inte hända i Update?
+            AdTowerOnClick();
         }
         public void Draw(SpriteBatch sb)
         {
@@ -91,6 +114,7 @@ namespace TowerDefenseAlgorithm
                 if (monsters[i].hp <= 0)
                 {
                     monsters.RemoveAt(i);
+                    cash += 100;
                 } 
             }
         }
@@ -99,6 +123,18 @@ namespace TowerDefenseAlgorithm
             foreach (Vector2 p in PathFinder.path)
             {
                 Board.board[(int)p.X, (int)p.Y].path = true;
+            }
+        }
+
+        private void PreviousMouseState()
+        {
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+            {
+                prevMState = true;
+            }
+            else
+            {
+                prevMState = false;
             }
         }
     }

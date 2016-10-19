@@ -25,7 +25,7 @@ namespace TowerDefenseAlgorithm
             PathFinder.CalculateClosestPath(new Vector2(0, 0), new Vector2(0, 0));  //Skapar path här
             //PathFinder.FindPath(new Point(3, 3), new Point(6, 6));
             //gm.AddMainTower(new Vector2(150, 150));
-            gm.AddMainTower(new Vector2(200, 200));
+            //gm.AddMainTower(new Vector2(200, 200));
             gm.AddMonster(new Vector2(150, 150));
             graphics.PreferredBackBufferWidth = 750;
             graphics.PreferredBackBufferHeight = 750;
@@ -35,7 +35,7 @@ namespace TowerDefenseAlgorithm
 
         protected override void Initialize()
         {
-
+            IsMouseVisible = true;
             base.Initialize();
         }
 

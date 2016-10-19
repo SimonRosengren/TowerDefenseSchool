@@ -40,15 +40,50 @@ namespace TowerDefenseAlgorithm
             {
                 for (int j = 1; j < Globals.Y_SIZE - 1; j++)
                 {
-                    if (i == 1 || j == 1)   //Sidor har inte 4 grannar
+                    if (i == 1 && j != 1 || i == 1 && j != Globals.Y_SIZE - 2)   //Sidor har inte 4 grannar
                     {
+                        map[i, j].neighbours.Add(map[i, j - 1]);//Över
                         map[i, j].neighbours.Add(map[i + 1, j]); //en till höger
                         map[i, j].neighbours.Add(map[i, j + 1]); //under
                     }
-                    else if (i == 13 || j == 13)
+
+                    if (j == 1 && i != Globals.X_SIZE - 2 || j == 1 && i != 1)   //Sidor har inte 4 grannar
                     {
-                        map[i, j].neighbours.Add(map[i - 1, j]); //en till höger
-                        map[i, j].neighbours.Add(map[i, j - 1]); //under
+                        map[i, j].neighbours.Add(map[i - 1, j]);//en till vänster
+                        map[i, j].neighbours.Add(map[i + 1, j]); //en till höger
+                        map[i, j].neighbours.Add(map[i, j + 1]); //under
+                    }
+                    else if (i == Globals.X_SIZE - 2 && j != Globals.Y_SIZE - 2 || i == Globals.X_SIZE - 2 && j != 1)
+                    {
+                        map[i, j].neighbours.Add(map[i - 1, j]); //en till vänster
+                        map[i, j].neighbours.Add(map[i, j - 1]); //¨över
+                        map[i, j].neighbours.Add(map[i, j + 1]); //under
+                    }
+                    else if (j == Globals.Y_SIZE - 2 && i != 1 || j == Globals.Y_SIZE - 2 && i != Globals.X_SIZE - 2)
+                    {
+                        map[i, j].neighbours.Add(map[i - 1, j]); //en till vänster
+                        map[i, j].neighbours.Add(map[i + 1, j]); //en till höger
+                        map[i, j].neighbours.Add(map[i, j - 1]); //över
+                    }
+                    if (i == 1 && j == 1)
+                    {
+                        map[i, j].neighbours.Add(map[i, j + 1]);
+                        map[i, j].neighbours.Add(map[i + 1, j]);
+                    }
+                    if (i == 1 && j == Globals.Y_SIZE - 2)
+                    {
+                        map[i, j].neighbours.Add(map[i + 1, j]);
+                        map[i, j].neighbours.Add(map[i, j + 1]);
+                    }
+                    if (i == Globals.X_SIZE - 2 && j == 1)
+                    {
+                        map[i, j].neighbours.Add(map[i - 1, j]); //en till vänster
+                        map[i, j].neighbours.Add(map[i, j + 1]); //under
+                    }
+                    if (i == Globals.X_SIZE && j == Globals.Y_SIZE)
+                    {
+                        map[i, j].neighbours.Add(map[i, j - 1]); //över
+                        map[i, j].neighbours.Add(map[i - 1, j]); //en till vänster
                     }
                     else
                     {
@@ -62,6 +97,7 @@ namespace TowerDefenseAlgorithm
         }
         public static void CalculateClosestPath()
         {
+
             path = FindPath(new Point(1, 2), new Point(12, 13));
         }
 

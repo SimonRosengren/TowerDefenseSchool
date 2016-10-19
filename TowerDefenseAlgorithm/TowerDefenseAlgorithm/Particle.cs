@@ -28,7 +28,7 @@ namespace TowerDefenseAlgorithm
         }
         public void Draw(SpriteBatch sb)
         {
-            sb.Draw(Globals.particleTex, pos, Color.White);
+            sb.Draw(Globals.particleTex, pos, Color.White * ttl);
         }
 
     }

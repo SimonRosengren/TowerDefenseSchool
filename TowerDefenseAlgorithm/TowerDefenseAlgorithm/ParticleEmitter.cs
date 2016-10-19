@@ -16,7 +16,7 @@ namespace TowerDefenseAlgorithm
         {
             for (int i = 0; i < 100; i++)
             {
-                particles.Add(new Particle(pos, new Vector2((float)rnd.Next(-10, 10), (float)rnd.Next(-10, 10)), 1f, 50));
+                particles.Add(new Particle(pos, new Vector2((float)rnd.Next(-10, 10), (float)rnd.Next(-10, 10)), 1f, rnd.Next(5, 150)));
             }
         }
         private static void RemoveFinished()

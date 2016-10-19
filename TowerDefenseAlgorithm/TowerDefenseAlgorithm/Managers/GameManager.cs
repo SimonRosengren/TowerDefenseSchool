@@ -26,6 +26,7 @@ namespace TowerDefenseAlgorithm
             towers.Add(new MainTower(pos, 3));
             cash -= 100;
             Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
+            ResetColorPath();
             PathFinder.CreateMap(); //Gör om kartan för pathfinder efter nytt torn
             PathFinder.CalculateClosestPath(); //Räknar om pathen
         }
@@ -104,6 +105,13 @@ namespace TowerDefenseAlgorithm
                     monsters.RemoveAt(i);
                     cash += 100;
                 } 
+            }
+        }
+        void ResetColorPath()
+        {
+            foreach (Vector2 p in PathFinder.path)
+            {
+                Board.board[(int)p.X, (int)p.Y].path = false;
             }
         }
         void ColorPath()

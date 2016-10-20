@@ -14,9 +14,13 @@ namespace TowerDefenseAlgorithm
         List<Tower> towers = new List<Tower>();
         int cash = 100;
         int health = 100;
+        int nrOfMonsters = 0;
         bool prevMState;
+        bool pause = false;
+        float betweenWaveTimer = 0;
+        float timeBetweenWaves = 10f;
         float waveTimer;
-        float timeBetweenWaves = 1f;
+        float timeBetweenMonsters = 1f;
         public void AddMonster(Vector2 pos)
         {
             monsters.Add(new Monster(pos));
@@ -137,17 +141,29 @@ namespace TowerDefenseAlgorithm
         void WaveSpawner(GameTime time)
         {
             waveTimer += (float)time.ElapsedGameTime.TotalSeconds;
-            if (waveTimer >= timeBetweenWaves)
+            if (nrOfMonsters == 10)
+            {
+                betweenWaveTimer += (float)time.ElapsedGameTime.TotalSeconds;
+                pause = true;
+            }            
+            if (waveTimer >= timeBetweenMonsters && nrOfMonsters < 10)
             {
                 AddMonster(new Vector2(50, 100));
                 waveTimer = 0;
+                nrOfMonsters++;
             }
+            while (betweenWaveTimer >= timeBetweenWaves)
+            {
+                betweenWaveTimer = 0;
+                nrOfMonsters = 0;
+                pause = false;
+            }           
         }
 
         private void AdTowerOnClick()
         {
             Vector2 mousePos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed && pause == true)
             {
                 mousePos.X = mousePos.X / 50;
                 mousePos.Y = mousePos.Y / 50;

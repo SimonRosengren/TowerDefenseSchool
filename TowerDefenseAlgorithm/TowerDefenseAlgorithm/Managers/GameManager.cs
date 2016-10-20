@@ -14,7 +14,7 @@ namespace TowerDefenseAlgorithm
         List<Tower> towers = new List<Tower>();
         int cash = 100;
         int health = 100;
-        int nrOfMonsters = 0;
+        int nrOfMonsters = 10;
         bool prevMState;
         bool pause = false;
         float betweenWaveTimer = 0;

@@ -185,7 +185,15 @@ namespace TowerDefenseAlgorithm
             mousePos.Y = mousePos.Y / 50;
             mousePos.X = (int)mousePos.X * 50;
             mousePos.Y = (int)mousePos.Y * 50;
-            sb.Draw(Globals.highlight, mousePos);
+            if (!pause || (int)mousePos.X / 50 == 0 || (int)mousePos.X / 50 == 14 || (int)mousePos.Y / 50 == 0 || (int)mousePos.Y / 50 == 14 || !Board.board[(int)mousePos.X / 50, (int)mousePos.Y / 50].isPassable())
+            {
+                sb.Draw(Globals.redHighlight, mousePos);
+            }
+            else
+            {
+                sb.Draw(Globals.highlight, mousePos);
+            }
+            
         }
     }
 }

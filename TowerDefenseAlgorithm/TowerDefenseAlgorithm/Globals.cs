@@ -23,6 +23,7 @@ namespace TowerDefenseAlgorithm
         public static Texture2D bullet;
         public static Texture2D particleTex;
         public static Texture2D pathTileTex;
+        public static Texture2D highlight;
 
         public static void LoadTextures(ContentManager content)
         {
@@ -35,6 +36,7 @@ namespace TowerDefenseAlgorithm
             bullet = content.Load<Texture2D>(@"bullet");
             particleTex = content.Load<Texture2D>(@"Particle");
             pathTileTex = content.Load<Texture2D>(@"PathTile");
+            highlight = content.Load<Texture2D>(@"Highlight");
         }
     }
 }

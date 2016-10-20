@@ -63,6 +63,7 @@ namespace TowerDefenseAlgorithm
             {
                 t.Draw(sb);
             }
+            HiglightTile(sb);
             ParticleEmitter.Draw(sb);
         }
         void CheckForTowerTargets()
@@ -159,6 +160,16 @@ namespace TowerDefenseAlgorithm
 
             }
             PreviousMouseState();
+        }
+
+        private void HiglightTile(SpriteBatch sb)
+        {
+            Vector2 mousePos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+            mousePos.X = mousePos.X / 50;
+            mousePos.Y = mousePos.Y / 50;
+            mousePos.X = (int)mousePos.X * 50;
+            mousePos.Y = (int)mousePos.Y * 50;
+            sb.Draw(Globals.highlight, mousePos);
         }
     }
 }

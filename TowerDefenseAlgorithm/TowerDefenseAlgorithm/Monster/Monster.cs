@@ -28,9 +28,7 @@ namespace TowerDefenseAlgorithm
         }
         public void Move(GameTime time)
         {
-            this.pos += Vector2.Normalize(nextTile * 50 - pos) * (float)time.ElapsedGameTime.TotalSeconds * 100;
-            
-
+            this.pos += Vector2.Normalize(nextTile * 50 - pos) * (float)time.ElapsedGameTime.TotalSeconds * 100;          
             distanceMoved = Vector2.Distance(currentTile * 50, pos);
             if (distanceMoved >= Globals.TILE_SIZE)
             {

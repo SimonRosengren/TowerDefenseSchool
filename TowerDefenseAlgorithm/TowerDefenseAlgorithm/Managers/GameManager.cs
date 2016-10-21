@@ -23,6 +23,8 @@ namespace TowerDefenseAlgorithm
         float timeBetweenWaves = 10f;
         float waveTimer;
         float timeBetweenMonsters = 1f;
+        public enum ChooseTower { Green, Red, Purple, Wall}
+        ChooseTower currentTower = ChooseTower.Green;
         public void AddMonster(Vector2 pos)
         {
             monsters.Add(new Monster(pos));
@@ -40,6 +42,10 @@ namespace TowerDefenseAlgorithm
         {
             towers.Add(new PurpleTower(pos, 5));
             cash -= 150;
+            Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
+            ResetColorPath();
+            PathFinder.CreateMap(); //Gör om kartan för pathfinder efter nytt torn
+            PathFinder.CalculateClosestPath(); //Räknar om pathen
         }
         public void Update(GameTime time)
         {
@@ -59,6 +65,7 @@ namespace TowerDefenseAlgorithm
             ColorPath();    //Borde kankse inte hända i Update?
             AdTowerOnClick();
             WaveSpawner(time);
+            SetTower();
         }
         public void Draw(SpriteBatch sb)
         {
@@ -174,8 +181,15 @@ namespace TowerDefenseAlgorithm
                 mousePos.X = (int)mousePos.X * 50;
                 mousePos.Y = (int)mousePos.Y * 50;
                 if (!prevMState && Board.board[(int)mousePos.X/50, (int)mousePos.Y/50].isPassable())
-                {                   
-                    AddMainTower(new Vector2(mousePos.X, mousePos.Y));
+                {
+                    if (currentTower == ChooseTower.Green)
+                    {
+                        AddMainTower(new Vector2(mousePos.X, mousePos.Y));
+                    }
+                    if (currentTower == ChooseTower.Purple)
+                    {
+                        AddPurpleTower(new Vector2(mousePos.X, mousePos.Y));
+                    }
                 }
 
             }
@@ -219,6 +233,30 @@ namespace TowerDefenseAlgorithm
             if (mousePos.Y > 700)
             {
                 mousePos.Y = 700;
+            }
+        }
+
+        private void SetTower()
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.D1))
+            {
+                yellowHighlightPos.X = 750 / 2 - 150;
+                currentTower = ChooseTower.Green;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D2))
+            {
+                yellowHighlightPos.X = 750 / 2 - 100;
+                currentTower = ChooseTower.Red;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D3))
+            {
+                yellowHighlightPos.X = 750 / 2 - 50;
+                currentTower = ChooseTower.Purple;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D4))
+            {
+                yellowHighlightPos.X = 750 / 2;
+                currentTower = ChooseTower.Wall;
             }
         }
     }

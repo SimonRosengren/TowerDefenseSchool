@@ -13,6 +13,7 @@ namespace TowerDefenseAlgorithm
         List<Monster> monsters = new List<Monster>();
         List<Tower> towers = new List<Tower>();
         Vector2 mousePos;
+        Vector2 yellowHighlightPos = new Vector2(750 / 2 - 150, 700);
         int cash = 100;
         int health = 100;
         int nrOfMonsters = 10;
@@ -71,6 +72,8 @@ namespace TowerDefenseAlgorithm
             }
             HiglightTile(sb);
             ParticleEmitter.Draw(sb);
+            sb.Draw(Globals.bar, new Vector2(750 / 2 - 150, 700));
+            sb.Draw(Globals.yellowHighlight, yellowHighlightPos);
         }
         void CheckForTowerTargets()
         {

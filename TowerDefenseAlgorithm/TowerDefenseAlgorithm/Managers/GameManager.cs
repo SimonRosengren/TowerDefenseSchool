@@ -38,10 +38,19 @@ namespace TowerDefenseAlgorithm
             PathFinder.CreateMap(); //Gör om kartan för pathfinder efter nytt torn
             PathFinder.CalculateClosestPath(); //Räknar om pathen
         }
+        public void AddRedTower(Vector2 pos)
+        {
+            towers.Add(new RedTower(pos, 5));
+            cash -= 150;
+            Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
+            ResetColorPath();
+            PathFinder.CreateMap(); //Gör om kartan för pathfinder efter nytt torn
+            PathFinder.CalculateClosestPath(); //Räknar om pathen
+        }
         public void AddPurpleTower(Vector2 pos)
         {
             towers.Add(new PurpleTower(pos, 5));
-            cash -= 150;
+            cash -= 200;
             Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
             ResetColorPath();
             PathFinder.CreateMap(); //Gör om kartan för pathfinder efter nytt torn
@@ -189,6 +198,10 @@ namespace TowerDefenseAlgorithm
                     if (currentTower == ChooseTower.Purple)
                     {
                         AddPurpleTower(new Vector2(mousePos.X, mousePos.Y));
+                    }
+                    if (currentTower == ChooseTower.Red)
+                    {
+                        AddRedTower(new Vector2(mousePos.X, mousePos.Y));
                     }
                 }
 

@@ -12,6 +12,7 @@ namespace TowerDefenseAlgorithm
     {
         List<Monster> monsters = new List<Monster>();
         List<Tower> towers = new List<Tower>();
+        Vector2 mousePos;
         int cash = 100;
         int health = 100;
         int nrOfMonsters = 10;
@@ -41,6 +42,7 @@ namespace TowerDefenseAlgorithm
         }
         public void Update(GameTime time)
         {
+            mousePos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
             ParticleEmitter.Update(time);
             foreach (Monster m in monsters)
             {
@@ -162,7 +164,6 @@ namespace TowerDefenseAlgorithm
 
         private void AdTowerOnClick()
         {
-            Vector2 mousePos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && pause == true)
             {
                 mousePos.X = mousePos.X / 50;
@@ -180,11 +181,12 @@ namespace TowerDefenseAlgorithm
 
         private void HiglightTile(SpriteBatch sb)
         {
-            Vector2 mousePos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+            
             mousePos.X = mousePos.X / 50;
             mousePos.Y = mousePos.Y / 50;
             mousePos.X = (int)mousePos.X * 50;
             mousePos.Y = (int)mousePos.Y * 50;
+            FixMousePos();
             //Förlåt för lång if-sats
             if (!pause || (int)mousePos.X / 50 == 0 || (int)mousePos.X / 50 == 14 || (int)mousePos.Y / 50 == 0 || (int)mousePos.Y / 50 == 14 || !Board.board[(int)mousePos.X / 50, (int)mousePos.Y / 50].isPassable())
             {
@@ -195,6 +197,26 @@ namespace TowerDefenseAlgorithm
                 sb.Draw(Globals.highlight, mousePos);
             }
             
+        }
+
+        private void FixMousePos()
+        {
+            if (mousePos.X < 0)
+            {
+                mousePos.X = 0;
+            }
+            if (mousePos.X > 700)
+            {
+                mousePos.X = 700;
+            }
+            if (mousePos.Y < 0)
+            {
+                mousePos.Y = 0;
+            }
+            if (mousePos.Y > 700)
+            {
+                mousePos.Y = 700;
+            }
         }
     }
 }

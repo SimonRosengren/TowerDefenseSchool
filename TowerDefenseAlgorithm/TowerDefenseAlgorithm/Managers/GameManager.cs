@@ -14,7 +14,7 @@ namespace TowerDefenseAlgorithm
         List<Tower> towers = new List<Tower>();
         Vector2 mousePos;
         Vector2 yellowHighlightPos = new Vector2(750 / 2 - 150, 700);
-        int cash = 100;
+        int cash = 300;
         int health = 100;
         int nrOfMonsters = 10;
         bool prevMState;
@@ -191,15 +191,15 @@ namespace TowerDefenseAlgorithm
                 mousePos.Y = (int)mousePos.Y * 50;
                 if (!prevMState && Board.board[(int)mousePos.X/50, (int)mousePos.Y/50].isPassable() && monsters.Count == 0)
                 {
-                    if (currentTower == ChooseTower.Green)
+                    if (currentTower == ChooseTower.Green && cash >= 100)
                     {
                         AddMainTower(new Vector2(mousePos.X, mousePos.Y));
                     }
-                    if (currentTower == ChooseTower.Purple)
+                    if (currentTower == ChooseTower.Purple && cash >= 200)
                     {
                         AddPurpleTower(new Vector2(mousePos.X, mousePos.Y));
                     }
-                    if (currentTower == ChooseTower.Red)
+                    if (currentTower == ChooseTower.Red && cash >= 150)
                     {
                         AddRedTower(new Vector2(mousePos.X, mousePos.Y));
                     }
@@ -216,17 +216,28 @@ namespace TowerDefenseAlgorithm
             mousePos.Y = mousePos.Y / 50;
             mousePos.X = (int)mousePos.X * 50;
             mousePos.Y = (int)mousePos.Y * 50;
-            FixMousePos();
+            FixMousePos();            
             //Förlåt för lång if-sats
             if (!pause || (int)mousePos.X / 50 == 0 || (int)mousePos.X / 50 == 14 || (int)mousePos.Y / 50 == 0 || (int)mousePos.Y / 50 == 14 || !Board.board[(int)mousePos.X / 50, (int)mousePos.Y / 50].isPassable() || monsters.Count != 0)
+            {
+                sb.Draw(Globals.redHighlight, mousePos);
+            }
+            else if (currentTower == ChooseTower.Green && cash < 100)
+            {
+                sb.Draw(Globals.redHighlight, mousePos);
+            }
+            else if (currentTower == ChooseTower.Red && cash < 150)
+            {
+                sb.Draw(Globals.redHighlight, mousePos);
+            }
+            else if (currentTower == ChooseTower.Purple && cash < 200)
             {
                 sb.Draw(Globals.redHighlight, mousePos);
             }
             else
             {
                 sb.Draw(Globals.highlight, mousePos);
-            }
-            
+            }            
         }
 
         private void FixMousePos()

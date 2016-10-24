@@ -14,12 +14,17 @@ namespace TowerDefenseAlgorithm
         public Vector2 velocity;
         float speed;
         public float ttl;
-        public Particle(Vector2 startPos, Vector2 velocity, float ttl, float speed)
+        Color color;
+        Random rnd = new Random();
+        public Particle(Vector2 startPos, Vector2 velocity, float ttl, float speed, Color color1)
         {
             this.ttl = ttl;
             this.velocity = velocity;
             this.pos = startPos;
             this.speed = speed;
+            int i = rnd.Next(0, 255);
+            this.color = color1;
+         
         }
         public void Update(GameTime time)
         {
@@ -28,7 +33,7 @@ namespace TowerDefenseAlgorithm
         }
         public void Draw(SpriteBatch sb)
         {
-            sb.Draw(Globals.particleTex, pos, Color.White * ttl);
+            sb.Draw(Globals.particleTex, pos, color * ttl);
         }
 
     }

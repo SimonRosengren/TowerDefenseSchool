@@ -12,11 +12,19 @@ namespace TowerDefenseAlgorithm
     {
         private static Random rnd = new Random();
         private static List<Particle> particles = new List<Particle>();
+  
         public static void Explosion(Vector2 pos)
         {
             for (int i = 0; i < 100; i++)
             {
-                particles.Add(new Particle(pos, new Vector2((float)rnd.Next(-10, 10), (float)rnd.Next(-10, 10)), 1f, rnd.Next(5, 150)));
+                particles.Add(new Particle(pos, new Vector2((float)rnd.Next(-10, 10), (float)rnd.Next(-10, 10)), 1f, rnd.Next(5, 150), new Color(rnd.Next(200, 255), rnd.Next(0, 100), rnd.Next(0, 10))));
+            }
+        }
+        public static void BlueExplosion(Vector2 pos)
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                particles.Add(new Particle(pos, new Vector2((float)rnd.Next(-10, 10), (float)rnd.Next(-10, 10)), 1f, rnd.Next(5, 150), new Color(rnd.Next(0, 4), rnd.Next(0, 50), rnd.Next(220, 255))));
             }
         }
         private static void RemoveFinished()

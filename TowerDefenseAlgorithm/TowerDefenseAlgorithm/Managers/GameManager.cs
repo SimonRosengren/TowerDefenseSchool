@@ -189,7 +189,7 @@ namespace TowerDefenseAlgorithm
                 mousePos.Y = mousePos.Y / 50;
                 mousePos.X = (int)mousePos.X * 50;
                 mousePos.Y = (int)mousePos.Y * 50;
-                if (!prevMState && Board.board[(int)mousePos.X/50, (int)mousePos.Y/50].isPassable())
+                if (!prevMState && Board.board[(int)mousePos.X/50, (int)mousePos.Y/50].isPassable() && monsters.Count == 0)
                 {
                     if (currentTower == ChooseTower.Green)
                     {
@@ -218,7 +218,7 @@ namespace TowerDefenseAlgorithm
             mousePos.Y = (int)mousePos.Y * 50;
             FixMousePos();
             //Förlåt för lång if-sats
-            if (!pause || (int)mousePos.X / 50 == 0 || (int)mousePos.X / 50 == 14 || (int)mousePos.Y / 50 == 0 || (int)mousePos.Y / 50 == 14 || !Board.board[(int)mousePos.X / 50, (int)mousePos.Y / 50].isPassable())
+            if (!pause || (int)mousePos.X / 50 == 0 || (int)mousePos.X / 50 == 14 || (int)mousePos.Y / 50 == 0 || (int)mousePos.Y / 50 == 14 || !Board.board[(int)mousePos.X / 50, (int)mousePos.Y / 50].isPassable() || monsters.Count != 0)
             {
                 sb.Draw(Globals.redHighlight, mousePos);
             }

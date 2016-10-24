@@ -20,7 +20,7 @@ namespace TowerDefenseAlgorithm
         bool prevMState;
         bool pause = false;
         float betweenWaveTimer = 0;
-        float timeBetweenWaves = 10f;
+        float timeBetweenWaves = 20f;
         float waveTimer;
         float timeBetweenMonsters = 1f;
         public enum ChooseTower { Green, Red, Purple, Wall}

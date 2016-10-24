@@ -15,6 +15,7 @@ namespace TowerDefenseAlgorithm
         float distanceMoved = 0;
         public Vector2 nextTile = new Vector2(0, 0);
         public Vector2 currentTile;
+
         public Monster(Vector2 pos)
         {
             this.pos = pos;

@@ -75,6 +75,7 @@ namespace TowerDefenseAlgorithm
             AdTowerOnClick();
             WaveSpawner(time);
             SetTower();
+            CheckIfMonsterIsFinished();
         }
         public void Draw(SpriteBatch sb)
         {
@@ -86,6 +87,7 @@ namespace TowerDefenseAlgorithm
             {
                 t.Draw(sb);
             }
+            sb.DrawString(Globals.healthFont, "Health: " + health + "   Cash: "+ cash, new Vector2(10, 10), Color.White); 
             HiglightTile(sb);
             ParticleEmitter.Draw(sb);
             sb.Draw(Globals.bar, new Vector2(750 / 2 - 150, 700));
@@ -129,7 +131,7 @@ namespace TowerDefenseAlgorithm
                 if (monsters[i].hp <= 0)
                 {
                     monsters.RemoveAt(i);
-                    cash += 100;
+                    cash += 20;
                 } 
             }
         }
@@ -281,6 +283,17 @@ namespace TowerDefenseAlgorithm
             {
                 yellowHighlightPos.X = 750 / 2;
                 currentTower = ChooseTower.Wall;
+            }
+        }
+        public void CheckIfMonsterIsFinished()
+        {
+            for (int i = 0; i < monsters.Count; i++)
+            {
+                if (monsters[i].currentTile == Globals.FINISH_TILE)
+                {
+                    health -= 1;
+                    monsters.RemoveAt(i);
+                }
             }
         }
     }

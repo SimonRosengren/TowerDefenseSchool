@@ -49,7 +49,7 @@ namespace TowerDefenseAlgorithm
         }
         public void AddPurpleTower(Vector2 pos)
         {
-            towers.Add(new PurpleTower(pos, 5));
+            towers.Add(new PurpleTower(pos, 10));
             cash -= 200;
             Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
             ResetColorPath();

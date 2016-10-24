@@ -14,7 +14,7 @@ namespace TowerDefenseAlgorithm
         bool reloading = true;
         public RedTower(Vector2 pos, int damage) : base(pos, damage)
         {
-
+            
         }
         public override void Update(GameTime time)
         {

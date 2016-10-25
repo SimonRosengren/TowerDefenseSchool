@@ -29,6 +29,7 @@ namespace TowerDefenseAlgorithm
         public static Texture2D bar;
         public static SpriteFont healthFont;
         public static Vector2 FINISH_TILE = new Vector2(12, 13);
+        public static Texture2D largeExplosionParticle;
 
         public static void LoadTextures(ContentManager content)
         {
@@ -46,6 +47,7 @@ namespace TowerDefenseAlgorithm
             yellowHighlight = content.Load<Texture2D>(@"YellowHighlight");
             bar = content.Load<Texture2D>(@"Bar");
             healthFont = content.Load<SpriteFont>(@"font");
+            largeExplosionParticle = content.Load<Texture2D>(@"largeRoundExplosion");
         }
     }
 }

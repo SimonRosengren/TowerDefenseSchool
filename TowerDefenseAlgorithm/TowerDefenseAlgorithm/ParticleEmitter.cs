@@ -15,16 +15,29 @@ namespace TowerDefenseAlgorithm
   
         public static void Explosion(Vector2 pos)
         {
+
             for (int i = 0; i < 100; i++)
             {
-                particles.Add(new Particle(pos, new Vector2((float)rnd.Next(-10, 10), (float)rnd.Next(-10, 10)), 1f, rnd.Next(5, 150), new Color(rnd.Next(200, 255), rnd.Next(0, 100), rnd.Next(0, 10))));
+                particles.Add(new Particle(pos, new Vector2((float)rnd.Next(-10, 10), (float)rnd.Next(-10, 10)), 1f, rnd.Next(10, 20), new Color(rnd.Next(200, 255), rnd.Next(0, 100), rnd.Next(0, 10)), Globals.particleTex));
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                particles.Add(new Particle(pos, new Vector2((float)rnd.Next(-10, 10), (float)rnd.Next(-10, 10)), 1f, rnd.Next(5, 10), new Color(rnd.Next(200, 255), rnd.Next(150, 165), rnd.Next(0, 1)), Globals.largeExplosionParticle));
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                particles.Add(new Particle(pos, new Vector2((float)rnd.Next(-10, 10), (float)rnd.Next(-10, 10)), 1f, rnd.Next(5, 10), new Color(rnd.Next(200, 255), rnd.Next(0, 100), rnd.Next(0, 10)), Globals.largeExplosionParticle));
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                particles.Add(new Particle(pos, new Vector2((float)rnd.Next(-10, 10), (float)rnd.Next(-10, 10)), 1f, rnd.Next(100, 120), new Color(rnd.Next(200, 255), rnd.Next(0, 100), rnd.Next(0, 10)), Globals.particleTex));
             }
         }
         public static void BlueExplosion(Vector2 pos)
         {
             for (int i = 0; i < 100; i++)
             {
-                particles.Add(new Particle(pos, new Vector2((float)rnd.Next(-10, 10), (float)rnd.Next(-10, 10)), 1f, rnd.Next(5, 150), new Color(rnd.Next(0, 4), rnd.Next(0, 50), rnd.Next(220, 255))));
+                //particles.Add(new Particle(pos, new Vector2((float)rnd.Next(-10, 10), (float)rnd.Next(-10, 10)), 1f, rnd.Next(5, 150), new Color(rnd.Next(0, 4), rnd.Next(0, 50), rnd.Next(220, 255))));
             }
         }
         private static void RemoveFinished()

@@ -31,7 +31,7 @@ namespace TowerDefenseAlgorithm
         }
         public void AddMainTower(Vector2 pos)
         {
-            towers.Add(new MainTower(pos, 3));
+            towers.Add(new MainTower(pos, 2));
             cash -= 100;
             Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
             ResetColorPath();
@@ -40,7 +40,7 @@ namespace TowerDefenseAlgorithm
         }
         public void AddRedTower(Vector2 pos)
         {
-            towers.Add(new RedTower(pos, 5));
+            towers.Add(new RedTower(pos, 3));
             cash -= 150;
             Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
             ResetColorPath();
@@ -49,7 +49,7 @@ namespace TowerDefenseAlgorithm
         }
         public void AddPurpleTower(Vector2 pos)
         {
-            towers.Add(new PurpleTower(pos, 10));
+            towers.Add(new PurpleTower(pos, 5));
             cash -= 200;
             Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
             ResetColorPath();

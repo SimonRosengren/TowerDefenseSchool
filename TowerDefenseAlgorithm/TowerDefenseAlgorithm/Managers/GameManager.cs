@@ -31,13 +31,8 @@ namespace TowerDefenseAlgorithm
         }
         public void AddMainTower(Vector2 pos)
         {
-<<<<<<< HEAD
-            towers.Add(new MainTower(pos, 3));           
-=======
             towers.Add(new MainTower(pos, 2));
-            cash -= 100;
             Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
->>>>>>> origin/master
             ResetColorPath();
             Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
             PathFinder.CreateMap(); //Gör om kartan för pathfinder efter nytt torn
@@ -55,20 +50,38 @@ namespace TowerDefenseAlgorithm
         public void AddRedTower(Vector2 pos)
         {
             towers.Add(new RedTower(pos, 3));
-            cash -= 150;
             Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
             ResetColorPath();
+            Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
             PathFinder.CreateMap(); //Gör om kartan för pathfinder efter nytt torn
-            PathFinder.CalculateClosestPath(); //Räknar om pathen
+            if (!PathFinder.CalculateClosestPath()) //Kollar om path finns efter torn
+            {
+                towers.RemoveAt(towers.Count - 1);  //Annars tar vi bort sista tornet igen
+                Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(true);
+            }
+            else
+            {
+                cash -= 150;
+            }
+               
         }
         public void AddPurpleTower(Vector2 pos)
         {
             towers.Add(new PurpleTower(pos, 5));
-            cash -= 200;
             Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
             ResetColorPath();
+            Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
             PathFinder.CreateMap(); //Gör om kartan för pathfinder efter nytt torn
-            PathFinder.CalculateClosestPath(); //Räknar om pathen
+            if (!PathFinder.CalculateClosestPath()) //Kollar om path finns efter torn
+            {
+                towers.RemoveAt(towers.Count - 1);  //Annars tar vi bort sista tornet igen
+                Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(true);
+            }
+            else
+            {
+                cash -= 200;
+            }
+               
         }
         public void Update(GameTime time)
         {

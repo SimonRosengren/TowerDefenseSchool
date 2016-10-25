@@ -31,12 +31,20 @@ namespace TowerDefenseAlgorithm
         }
         public void AddMainTower(Vector2 pos)
         {
-            towers.Add(new MainTower(pos, 3));
-            cash -= 100;
-            Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
+            towers.Add(new MainTower(pos, 3));           
             ResetColorPath();
+            Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(false);
             PathFinder.CreateMap(); //Gör om kartan för pathfinder efter nytt torn
-            PathFinder.CalculateClosestPath(); //Räknar om pathen
+            if (!PathFinder.CalculateClosestPath()) //Kollar om path finns efter torn
+            {
+                towers.RemoveAt(towers.Count - 1);  //Annars tar vi bort sista tornet igen
+                Board.board[(int)(pos.X / 50), (int)(pos.Y / 50)].SetPassable(true);
+            }
+            else
+            {
+                cash -= 100;
+            }
+                     
         }
         public void AddRedTower(Vector2 pos)
         {

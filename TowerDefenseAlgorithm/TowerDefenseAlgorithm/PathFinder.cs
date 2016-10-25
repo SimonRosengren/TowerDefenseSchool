@@ -95,10 +95,14 @@ namespace TowerDefenseAlgorithm
                 }
             }
         }
-        public static void CalculateClosestPath()
+        public static bool CalculateClosestPath()
         {
-
-            path = FindPath(new Point(1, 2), new Point(12, 13));
+            if (FindPath(new Point(1, 2), new Point(12, 13)).Count != 0) //Finns det en path?
+            {
+                 path = FindPath(new Point(1, 2), new Point(12, 13));   
+                 return true;
+            }
+            return false;   //Returnar false om ingen pathg går att hitta
         }
 
 
@@ -180,7 +184,7 @@ namespace TowerDefenseAlgorithm
             // Reverse the path and transform into world space.
             for (int i = closedList.Count - 1; i >= 0; i--)
             {
-                finalPath.Add(new Vector2(closedList[i].x, //*32?
+                finalPath.Add(new Vector2(closedList[i].x, 
                                           closedList[i].y));
             }
             for (int i = 0; i < finalPath.Count; i++)

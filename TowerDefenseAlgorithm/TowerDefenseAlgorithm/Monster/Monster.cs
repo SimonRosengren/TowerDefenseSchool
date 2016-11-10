@@ -10,7 +10,7 @@ namespace TowerDefenseAlgorithm
 {
     class Monster
     {
-        public int hp { get; private set; }
+        public float hp { get; private set; }
         Vector2 pos;
         float distanceMoved = 0;
         public Vector2 nextTile = new Vector2(0, 0);
@@ -74,7 +74,7 @@ namespace TowerDefenseAlgorithm
         {
             return new Vector2((int)pos.X + 25, (int)pos.Y + 25);
         }
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             this.hp -= damage;
         }

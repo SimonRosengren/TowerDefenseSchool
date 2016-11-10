@@ -11,13 +11,19 @@ namespace TowerDefenseAlgorithm
     public static class PathFinder
     {
         public static PathNode[,] map = new PathNode[Globals.X_SIZE, Globals.Y_SIZE];
+        //Holds the final path
         public static List<Vector2> path = new List<Vector2>();
-
         // Holds search nodes that are avaliable to search.
         public static List<PathNode> openList = new List<PathNode>();
         // Holds the nodes that have already been searched.
         public static List<PathNode> closedList = new List<PathNode>();
 
+        public static Stack<PathNode> closedStack = new Stack<PathNode>();
+        
+
+        /// <summary>
+        /// Creates the map with passable and not passable nodes
+        /// </summary>
         public static void CreateMap()
         {
             for (int i = 0; i < Globals.X_SIZE; i++)
@@ -34,6 +40,9 @@ namespace TowerDefenseAlgorithm
             }
             SetNeighbours();
         }
+        /// <summary>
+        /// Setting the passable neighbours for each node in the map
+        /// </summary>
         public static void SetNeighbours()
         {
             for (int i = 1; i < Globals.X_SIZE - 1; i++) //Börjar på 1 för att skippa kanterna
@@ -95,6 +104,10 @@ namespace TowerDefenseAlgorithm
                 }
             }
         }
+        /// <summary>
+        /// Chescks if therw will be a possible path between two nodes, if there is one sets the path-list to this path.
+        /// </summary>
+        /// <returns></returns>
         public static bool CalculateClosestPath()
         {
             if (FindPath(new Point(1, 2), new Point(12, 13)).Count != 0) //Finns det en path?
@@ -107,7 +120,7 @@ namespace TowerDefenseAlgorithm
 
 
         /// <summary>
-        /// Returns an estimate of the distance between two points. (H)
+        /// Calculates H, a estimated path between two points
         /// </summary>
         public static float Heuristic(Point point1, Point point2)
         {
@@ -121,6 +134,8 @@ namespace TowerDefenseAlgorithm
         {
             openList.Clear();
             closedList.Clear();
+
+            closedStack.Clear();
 
             for (int x = 0; x < Globals.X_SIZE; x++)
             {
@@ -169,6 +184,8 @@ namespace TowerDefenseAlgorithm
         {
             closedList.Add(endNode);
 
+            closedStack.Push(endNode);
+
             PathNode parentTile = endNode.Parent;
 
             // Trace back through the nodes using the parent fields
@@ -176,19 +193,18 @@ namespace TowerDefenseAlgorithm
             while (parentTile != startNode)
             {
                 closedList.Add(parentTile);
+                closedStack.Push(parentTile);
                 parentTile = parentTile.Parent;
             }
 
             List<Vector2> finalPath = new List<Vector2>();
 
-            // Reverse the path and transform into world space.
-            for (int i = closedList.Count - 1; i >= 0; i--)
+
+            //Closed list som stack istället för lista, vilket gör attt vi inte behöver loopa genom den baklänges, och poppa sen bara ut dem            
+            while (closedStack.Count ()!= 0)
             {
-                finalPath.Add(new Vector2(closedList[i].x, 
-                                          closedList[i].y));
-            }
-            for (int i = 0; i < finalPath.Count; i++)
-            {
+                finalPath.Add(new Vector2(closedStack.Peak().x, closedStack.Peak().y)); //Sparar ner plats till finalPath
+                closedStack.Pop(); //Poppar ut noden
             }
             return finalPath;
         }

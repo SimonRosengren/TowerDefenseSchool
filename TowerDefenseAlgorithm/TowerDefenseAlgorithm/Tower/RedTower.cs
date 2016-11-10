@@ -9,10 +9,10 @@ namespace TowerDefenseAlgorithm
 {
     class RedTower : Tower
     {
-        float fireRate = 1f;
+        float fireRate = 0.1f;
         float reloadTimer = 0;
         bool reloading = true;
-        public RedTower(Vector2 pos, int damage) : base(pos, damage)
+        public RedTower(Vector2 pos, float damage) : base(pos, damage)
         {
             
         }

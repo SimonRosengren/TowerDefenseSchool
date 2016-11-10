@@ -13,9 +13,9 @@ namespace TowerDefenseAlgorithm
         public Vector2 pos {get; protected set;}
         protected Vector2 target;
         protected float speed = 300;
-        public int damage { get; protected set; }
+        public float damage { get; protected set; }
         public bool finished = false;
-        public Bullet(Vector2 pos, Vector2 target, int damage)
+        public Bullet(Vector2 pos, Vector2 target, float damage)
         {
             this.pos = pos;
             this.target = target;

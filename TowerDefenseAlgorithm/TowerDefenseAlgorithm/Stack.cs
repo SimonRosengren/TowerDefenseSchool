@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TowerDefenseAlgorithm
 {
-    class Stack<T>
+    public class Stack<T>
     {
         ListNode<T>[] stack;
         ListNode<T>[] temp;
@@ -76,6 +76,12 @@ namespace TowerDefenseAlgorithm
                 temp[i] = stack[i];
             }
             stack = temp;
+        }
+        public void Clear()
+        {
+            //Borde räcka
+            numbersOfObjects = 0;
+
         }
     }
 }

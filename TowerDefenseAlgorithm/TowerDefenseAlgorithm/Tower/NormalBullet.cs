@@ -10,7 +10,7 @@ namespace TowerDefenseAlgorithm
 {
     class NormalBullet : Bullet
     {
-        public NormalBullet(Vector2 pos, Vector2 target, int damage) : base(pos, target, damage)
+        public NormalBullet(Vector2 pos, Vector2 target, float damage) : base(pos, target, damage)
         {
 
         }

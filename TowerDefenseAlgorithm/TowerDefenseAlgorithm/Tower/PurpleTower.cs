@@ -12,7 +12,7 @@ namespace TowerDefenseAlgorithm
         float fireRate = 1f;
         float reloadTimer = 0;
         bool reloading = true;
-        public PurpleTower(Vector2 pos, int damage) : base(pos, damage)
+        public PurpleTower(Vector2 pos, float damage) : base(pos, damage)
         {
 
         }

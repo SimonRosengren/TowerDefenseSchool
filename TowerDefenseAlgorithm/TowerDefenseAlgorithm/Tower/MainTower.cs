@@ -12,7 +12,7 @@ namespace TowerDefenseAlgorithm
         float fireRate = 0.6f;
         float reloadTimer = 0;
         bool reloading = true;
-        public MainTower(Vector2 pos, int damage) : base(pos, damage)
+        public MainTower(Vector2 pos, float damage) : base(pos, damage)
         {
             
         }

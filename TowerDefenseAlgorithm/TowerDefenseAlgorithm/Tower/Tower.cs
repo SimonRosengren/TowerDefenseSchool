@@ -12,9 +12,9 @@ namespace TowerDefenseAlgorithm
         float range = 200;
         public List<Bullet> bullets;
         protected Vector2 pos;
-        public int damage { get; private set; }
+        public float damage { get; private set; }
 
-        public Tower(Vector2 pos, int damage)
+        public Tower(Vector2 pos, float damage)
         {
             this.pos = pos;
             this.damage = damage;

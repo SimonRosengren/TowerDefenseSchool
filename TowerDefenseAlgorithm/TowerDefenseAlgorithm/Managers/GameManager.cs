@@ -10,6 +10,7 @@ namespace TowerDefenseAlgorithm
 {
     class GameManager
     {
+        string name;
         List<Monster> monsters = new List<Monster>();
         List<Tower> towers = new List<Tower>();
         Vector2 mousePos;
@@ -19,6 +20,7 @@ namespace TowerDefenseAlgorithm
         int nrOfMonsters = 10;
         bool prevMState;
         bool pause = false;
+        bool gameStart = false;
         float betweenWaveTimer = 0;
         float timeBetweenWaves = 20f;
         float waveTimer;
@@ -85,6 +87,10 @@ namespace TowerDefenseAlgorithm
         }
         public void Update(GameTime time)
         {
+            while (!gameStart)
+            {
+                ConsoleStart();
+            }         
             mousePos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
             ParticleEmitter.Update(time);
             foreach (Monster m in monsters)
@@ -322,6 +328,13 @@ namespace TowerDefenseAlgorithm
                     monsters.RemoveAt(i);
                 }
             }
+        }
+
+        private void ConsoleStart()
+        {
+            Console.WriteLine("Type your name");
+            name = Console.ReadLine();            
+            gameStart = true;
         }
     }
 }

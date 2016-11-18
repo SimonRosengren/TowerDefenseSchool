@@ -14,17 +14,24 @@ namespace TowerDefenseAlgorithm
         List<Tower> towers = new List<Tower>();
         Vector2 mousePos;
         Vector2 yellowHighlightPos = new Vector2(750 / 2 - 150, 700);
-        int cash = 300;
-        int health = 100;
+        int cash = 30000;
+        int health = 2;
         int nrOfMonsters = 10;
         bool prevMState;
         bool pause = false;
         float betweenWaveTimer = 0;
-        float timeBetweenWaves = 20f;
+        float timeBetweenWaves = 5f;
         float waveTimer;
         float timeBetweenMonsters = 1f;
         public enum ChooseTower { Green, Red, Purple, Wall}
         ChooseTower currentTower = ChooseTower.Green;
+
+        string name = "Simon";
+        int score = 0;
+        float scoreMultiplier;
+
+        Highscore highscore = new Highscore();
+
         public void AddMonster(Vector2 pos)
         {
             monsters.Add(new Monster(pos));
@@ -85,6 +92,7 @@ namespace TowerDefenseAlgorithm
         }
         public void Update(GameTime time)
         {
+            score += 1;
             mousePos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
             ParticleEmitter.Update(time);
             foreach (Monster m in monsters)
@@ -103,6 +111,7 @@ namespace TowerDefenseAlgorithm
             WaveSpawner(time);
             SetTower();
             CheckIfMonsterIsFinished();
+            CheckIfLost();
         }
         public void Draw(SpriteBatch sb)
         {
@@ -321,6 +330,13 @@ namespace TowerDefenseAlgorithm
                     health -= 1;
                     monsters.RemoveAt(i);
                 }
+            }
+        }
+        public void CheckIfLost()
+        {
+            if (health < 1)
+            {
+                highscore.WriteScore(name, score);
             }
         }
     }

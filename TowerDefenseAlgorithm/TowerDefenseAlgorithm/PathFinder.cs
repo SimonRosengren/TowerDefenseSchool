@@ -16,8 +16,6 @@ namespace TowerDefenseAlgorithm
         // Holds search nodes that are avaliable to search.
         public static List<PathNode> openList = new List<PathNode>();
         // Holds the nodes that have already been searched.
-        public static List<PathNode> closedList = new List<PathNode>();
-
         public static Stack<PathNode> closedStack = new Stack<PathNode>();
         
 
@@ -133,7 +131,7 @@ namespace TowerDefenseAlgorithm
         public static void ResetSearchNodes()
         {
             openList.Clear();
-            closedList.Clear();
+
 
             closedStack.Clear();
 
@@ -182,8 +180,6 @@ namespace TowerDefenseAlgorithm
         /// </summary>
         private static List<Vector2> FindFinalPath(PathNode startNode, PathNode endNode)
         {
-            closedList.Add(endNode);
-
             closedStack.Push(endNode);
 
             PathNode parentTile = endNode.Parent;
@@ -192,7 +188,6 @@ namespace TowerDefenseAlgorithm
             // to find the best path.
             while (parentTile != startNode)
             {
-                closedList.Add(parentTile);
                 closedStack.Push(parentTile);
                 parentTile = parentTile.Parent;
             }

@@ -21,7 +21,7 @@ namespace TowerDefenseAlgorithm
         bool pause = false;
         bool gameStart = false;
         float betweenWaveTimer = 0;
-        float timeBetweenWaves = 15f;
+        float timeBetweenWaves = 5f;
         float waveTimer;
         float timeBetweenMonsters = 1f;
         public enum ChooseTower { Green, Red, Purple, Wall}
@@ -347,6 +347,7 @@ namespace TowerDefenseAlgorithm
             if (health < 1)
             {
                 highscore.WriteScore(name, score);
+                highscore.GetScoreWithName(name);
             }
         }
     }

@@ -44,6 +44,7 @@ namespace TowerDefenseAlgorithm
             StreamWriter file = new StreamWriter("Highscore.txt",true);
             file.WriteLine(name);
             file.WriteLine(textScore);
+            highScoreTable.Put(name, score);
             file.Close();
             //SortList();
         }
@@ -61,6 +62,10 @@ namespace TowerDefenseAlgorithm
             }
             //SortList();
             file.Close();
+        }
+        public void GetScoreWithName(string name)
+        {
+            Console.WriteLine(highScoreTable.Get(name));
         }
 
         private void SortList()

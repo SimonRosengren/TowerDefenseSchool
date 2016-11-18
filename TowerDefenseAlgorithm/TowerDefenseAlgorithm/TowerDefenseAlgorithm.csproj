@@ -41,8 +41,11 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entry.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Globals.cs" />
+    <Compile Include="Hashtable.cs" />
+    <Compile Include="Highscore.cs" />
     <Compile Include="ListNode.cs" />
     <Compile Include="Managers\GameManager.cs" />
     <Compile Include="Managers\MonsterManager.cs" />

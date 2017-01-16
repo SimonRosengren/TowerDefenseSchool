@@ -30,6 +30,8 @@ namespace TowerDefenseAlgorithm
         int score = 0;
         float scoreMultiplier;
 
+        bool gameOver = false;
+
         Highscore highscore = new Highscore();
 
         public void AddMonster(Vector2 pos)
@@ -344,10 +346,11 @@ namespace TowerDefenseAlgorithm
         }
         public void CheckIfLost()
         {
-            if (health < 1)
+            if (health < 1 && !gameOver)
             {
                 highscore.WriteScore(name, score);
                 highscore.GetScoreWithName(name);
+                gameOver = true;
             }
         }
     }
